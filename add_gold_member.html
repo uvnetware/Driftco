@@ -240,8 +240,8 @@
         };
 
         try {
-            const professionPath = membershipData.profession.replace(/\s/g, '').toLowerCase();
-            const response = await fetch(`https://drifthairstudioandacademyv-default-rtdb.firebaseio.com/memberships/${professionPath}.json`, {
+            const proPath = membershipData.membershipCard.replace(/\s/g, '').toLowerCase();
+            const response = await fetch(`https://drifthairstudioandacademyv-default-rtdb.firebaseio.com/memberships/${proPath}.json`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
