@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drift Hair Studio and Academy - Vadodara</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #4e4437, #1e1b18);
+            color: #f8ecd4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: #f8ecd4;
+            margin-bottom: 0.5em;
+            font-weight: 600;
+            font-size: 3em;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            color: #f1d0a7;
+            margin-bottom: 2em;
+            font-weight: 400;
+            font-size: 1.8em;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            width: 100%;
+            margin-top: 2em;
+        }
+
+        .card {
+            background-color: #3a3631;
+            border-radius: 16px;
+            padding: 2em;
+            text-align: center;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid #c9a67a;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 300%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.0) 70%);
+            transition: transform 0.3s;
+            transform: translateX(-50%) translateY(-50%) rotate(15deg);
+            z-index: 0;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.7);
+        }
+
+        .card:hover::before {
+            transform: translateX(-50%) translateY(-60%) rotate(15deg);
+        }
+
+        .card h2 {
+            margin-bottom: 1em;
+            color: #f1d0a7;
+            font-size: 1.5em;
+            font-weight: 600;
+            z-index: 1;
+            position: relative;
+        }
+
+        .card a {
+            display: inline-block;
+            padding: 0.75em 1.5em;
+            background-color: #c9a67a;
+            color: #f8ecd4;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.3s;
+            z-index: 1;
+            position: relative;
+        }
+
+        .card a:hover {
+            background-color: #f1d0a7;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .card {
+                padding: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>Drift Hair Studio and Academy</h1>
+<h2>Vadodara</h2>
+
+<div class="container">
+    <div class="card">
+        <h2>Add Customer</h2>
+        <a href="/Driftco/add_customer">Go to Form</a>
+    </div>
+    <div class="card">
+        <h2>Add Gold Member</h2>
+        <a href="/Driftco/add_gold_member">Go to Form</a>
+    </div>
+    <div class="card">
+        <h2>Book Appointment</h2>
+        <a href="/Driftco/book_appointment">Go to Form</a>
+    </div>
+    <div class="card">
+        <h2>View Booked Appointments</h2>
+        <a href="/Driftco/view_booked_appointments">View Appointments</a>
+    </div>
+    <div class="card">
+        <h2>View Membership</h2>
+        <a href="/Driftco/view_membership">View Membership</a>
+    </div>
+</div>
+
+</body>
+</html>
