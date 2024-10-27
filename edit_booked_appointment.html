@@ -152,7 +152,7 @@
             if (!response.ok) throw new Error('Failed to update appointment.');
 
             alert('Appointment updated successfully!');
-            window.location.href = 'viewappointment.html';
+            window.location.href = '/Driftco/view_booked_appointments';
         } catch (error) {
             console.error('Error:', error);
             alert('Error updating appointment.');
