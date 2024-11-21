@@ -116,11 +116,36 @@
         <label for="service">Service</label>
         <select id="service" required>
             <option value="">Select Service</option>
-            <option value="Haircut - 300">Haircut - $300</option>
-            <option value="Hair Color - 500">Hair Color - $500</option>
-            <option value="Hair Styling - 400">Hair Styling - $400</option>
-            <option value="Facial - 350">Facial - $350</option>
-            <option value="Hair Massage - 450"> Hair Massage - $450</option>
+            <option value="Haircut - 0">Haircut - ₹0</option>
+            <option value="Hair Color - 0">Hair Color - ₹0</option>
+            <option value="Hair Styling - 0">Hair Styling - ₹0</option>
+            <option value="Facial - 0">Facial - ₹0</option>
+            <option value="Hair Massage - 0">Hair Massage - ₹0</option>
+            <option value="Beard Trim - 0">Beard Trim - ₹0</option>
+            <option value="Manicure - 0">Manicure - ₹0</option>
+            <option value="Pedicure - 0">Pedicure - ₹0</option>
+            <option value="Threading - 0">Threading - ₹0</option>
+            <option value="Waxing - 0">Waxing - ₹0</option>
+            <option value="Hair Treatment - 0">Hair Treatment - ₹0</option>
+            <option value="Bridal Makeup - 0">Bridal Makeup - ₹0</option>
+            <option value="Party Makeup - 0">Party Makeup - ₹0</option>
+            <option value="Hair Straightening - 0">Hair Straightening - ₹0</option>
+            <option value="Hair Curling - 0">Hair Curling - ₹0</option>
+            <option value="Scalp Treatment - 0">Scalp Treatment - ₹0</option>
+            <option value="Nail Art - 0">Nail Art - ₹0</option>
+            <option value="Keratin Treatment - 0">Keratin Treatment - ₹0</option>
+            <option value="Balayage - 0">Balayage - ₹0</option>
+            <option value="Hair Highlights - 0">Hair Highlights - ₹0</option>
+            <option value="Spa Massage - 0">Spa Massage - ₹0</option>
+            <option value="Body Massage - 0">Body Massage - ₹0</option>
+            <option value="Full Body Waxing - 0">Full Body Waxing - ₹0</option>
+            <option value="Threading Eyebrows - 0">Threading Eyebrows - ₹0</option>
+            <option value="Chin Waxing - 0">Chin Waxing - ₹0</option>
+            <option value="Facial Hair Removal - 0">Facial Hair Removal - ₹0</option>
+            <option value="Shampoo & Conditioning - 0">Shampoo & Conditioning - ₹0</option>
+            <option value="Deep Conditioning - 0">Deep Conditioning - ₹0</option>
+            <option value="Blow Dry - 0">Blow Dry - ₹0</option>
+            <option value="Hair Relaxing - 0">Hair Relaxing - ₹0</option>
         </select>
     </div>
 
@@ -176,19 +201,6 @@
         const city = document.getElementById('city').value;
         const remark = document.getElementById('remark').value;
 
-        // Mobile number validation
-        const mobileNumberPattern = /^\d{10}$/;
-        const mobileField = document.getElementById('number');
-        
-        // Reset error styles before validation
-        mobileField.style.borderColor = '#c9a67a'; // Default color
-        
-        if (!mobileNumberPattern.test(number)) {
-            alert('Please enter a valid 10-digit mobile number.');
-            mobileField.style.borderColor = 'red'; // Red border for error
-            return;
-        }
-
         if (!date || !timeSlot || !service || !name || !number || !city) {
             alert('Please fill out all fields.');
             return;
@@ -196,10 +208,16 @@
 
         const [serviceName, price] = service.split(' - ');
 
+        // Validate phone number (10 digits)
+        if (!/^\d{10}$/.test(number)) {
+            alert('Please enter a valid 10-digit mobile number.');
+            return;
+        }
+
         const appointmentData = {
             timeSlot,
             service: serviceName,
-            price: parseFloat(price.replace('$', '')),
+            price: parseFloat(price.replace('₹', '')),
             name,
             number,
             city,
