@@ -215,7 +215,7 @@
     function openWhatsApp(number, name, timeSlot, service, city) {
         if (number) {
             const message = encodeURIComponent(
-                `Hello ${name},\n\nThis is a reminder for your appointment:\n\n- Service: ${service}\n- Time Slot: ${timeSlot}\n- City: ${city}\n\nLooking forward to seeing you!`
+                `Hello ${name},\n\nThis is a reminder for your booked appointment:\n\n- Service: ${service}\n- Time Slot: ${timeSlot}\n- City: ${city}\n\nLooking forward to seeing you!\nDrift Hair Studio Vadodara - https://instagram.com/drifthairstudioandacademy | Business - https://g.co/kgs/wYMffUm\nWebsite - drifthair.studio`
             );
             window.location.href = `https://wa.me/${number}?text=${message}`;
         } else {
