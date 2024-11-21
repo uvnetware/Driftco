@@ -120,7 +120,7 @@
             <option value="Hair Color - 500">Hair Color - $500</option>
             <option value="Hair Styling - 400">Hair Styling - $400</option>
             <option value="Facial - 350">Facial - $350</option>
-            <option value="Massage - 450">Massage - $450</option>
+            <option value="Hair Massage - 450"> Hair Massage - $450</option>
         </select>
     </div>
 
@@ -175,6 +175,19 @@
         const number = document.getElementById('number').value;
         const city = document.getElementById('city').value;
         const remark = document.getElementById('remark').value;
+
+        // Mobile number validation
+        const mobileNumberPattern = /^\d{10}$/;
+        const mobileField = document.getElementById('number');
+        
+        // Reset error styles before validation
+        mobileField.style.borderColor = '#c9a67a'; // Default color
+        
+        if (!mobileNumberPattern.test(number)) {
+            alert('Please enter a valid 10-digit mobile number.');
+            mobileField.style.borderColor = 'red'; // Red border for error
+            return;
+        }
 
         if (!date || !timeSlot || !service || !name || !number || !city) {
             alert('Please fill out all fields.');
