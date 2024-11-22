@@ -268,22 +268,45 @@
 }
     
     async function doneAppointment(date, id) {
-        try {
-            const response = await fetch(`https://drifthairstudioandacademyv-default-rtdb.firebaseio.com/appointments/${date}/${id}.json`, {
-                method: 'PATCH',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ remark: 'Completed' })
-            });
+    try {
+        // Fetch the appointment details
+        const responseFetch = await fetch(`https://drifthairstudioandacademyv-default-rtdb.firebaseio.com/appointments/${date}/${id}.json`);
+        if (!responseFetch.ok) throw new Error('Failed to fetch appointment details.');
 
-            if (!response.ok) throw new Error('Failed to update appointment.');
+        const appointment = await responseFetch.json();
 
-            alert('Service Completed!.');
-            loadAppointments();
-        } catch (error) {
-            console.error('Error:', error);
-            alert('Error updating appointment.');
-        }
+        // Update the appointment status to "Completed"
+        const responseUpdate = await fetch(`https://drifthairstudioandacademyv-default-rtdb.firebaseio.com/appointments/${date}/${id}.json`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ remark: 'Completed' })
+        });
+
+        if (!responseUpdate.ok) throw new Error('Failed to update appointment.');
+
+        // Send WhatsApp message
+        const message = encodeURIComponent(
+            `Dear ${appointment.name},\n\n` +
+            `Thank you for choosing Drift Hair Studio and Academy in Vadodara. It was a pleasure serving you, and we trust you enjoyed your experience with us.\n\n` +
+            `We greatly value your opinion and would be grateful if you could take a moment to rate our services and share your feedback. Your insights are invaluable in helping us continually enhance the quality of our offerings.\n\n` +
+            `Please share your review here: https://g.co/kgs/wYMffUm.\n\n` +
+            `We also invite you to follow us on Instagram at instagram.com/drifthairstudioandacademy for the latest updates, styling tips, and exclusive content.\n\n` +
+            `Thank you once again for your trust and support. We eagerly look forward to welcoming you back soon.\n\n` +
+            `Kind regards,\n` +
+            `The Drift Hair Studio (drifthair.studio) and Academy Team`
+        );
+
+        const whatsappUrl = `https://wa.me/${appointment.number}?text=${message}`;
+        window.open(whatsappUrl, '_blank');
+
+        alert('Appointment marked as completed, and WhatsApp message sent.');
+        loadAppointments();
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Error updating appointment.');
     }
+}
+
 
     async function deleteAppointment(date, id) {
         try {
