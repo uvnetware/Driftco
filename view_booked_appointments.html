@@ -190,7 +190,7 @@
                     </div>
                     <div class="btn-group">
                         <button class="btn-call" onclick="callCustomer('${appointment.number}')"><i class="fas fa-phone-alt"></i></button>
-                        <button class="btn-whatsapp" onclick="openWhatsApp('${appointment.number}', '${appointment.appointmentDate}', '${appointment.name}', '${appointment.timeSlot}', '${appointment.service}', '${appointment.city}')"><i class="fab fa-whatsapp"></i></button>
+                        <button class="btn-whatsapp" onclick="openWhatsApp('${appointment.number}', '${appointment.name}', '${appointment.timeSlot}', '${appointment.service}', '${appointment.city}', '${date}')"><i class="fab fa-whatsapp"></i></button>
                         <button class="btn-cancel" onclick="cancelAppointment('${date}', '${id}')"><i class="fas fa-times-circle"></i></button>
                         <button class="btn-delete" onclick="deleteAppointment('${date}', '${id}')"><i class="fas fa-trash-alt"></i></button>
                         <button class="btn-done" onclick="doneAppointment('${date}', '${id}')"><i class="fas fa-check"></i></button>
@@ -213,23 +213,23 @@
     }
 
     function openWhatsApp(number, name, timeSlot, service, city, appointmentDate) {
-    if (number) {
-        const message = encodeURIComponent(
-            `Dear ${name},\n\n` +
-            `This is a gentle *REMINDER* about your appointment for *${service}* on *${appointmentDate}* at *${timeSlot}* at Drift Hair Studio and Academy, Vadodara.\n\n` +
-            `We’re looking forward to your visit! Please ensure you arrive on time. If you need any assistance or wish to make changes, feel free to respond to this message.\n\n` +
-            `For updates and more, connect with us here:\n\n` +
-            `Instagram: instagram.com/drifthairstudioandacademy\n` +
-            `Google Profile: https://g.co/kgs/wYMffUm\n` +
-            `Website: drifthair.studio\n\n` +
-            `Thank you,\n` +
-            `Drift Hair Studio and Academy`
-        );
-        window.location.href = `https://wa.me/${number}?text=${message}`;
-    } else {
-        alert('Contact number not available.');
+        if (number) {
+            const message = encodeURIComponent(
+                `Dear ${name},\n\n` +
+                `This is a gentle *REMINDER* about your appointment for *${service}* on *${appointmentDate}* at *${timeSlot}* at Drift Hair Studio and Academy, Vadodara.\n\n` +
+                `We’re looking forward to your visit! Please ensure you arrive on time. If you need any assistance or wish to make changes, feel free to respond to this message.\n\n` +
+                `For updates and more, connect with us here:\n\n` +
+                `Instagram: instagram.com/drifthairstudioandacademy\n` +
+                `Google Profile: https://g.co/kgs/wYMffUm\n` +
+                `Website: drifthair.studio\n\n` +
+                `Thank you,\n` +
+                `Drift Hair Studio and Academy`
+            );
+            window.location.href = `https://wa.me/${number}?text=${message}`;
+        } else {
+            alert('Contact number not available.');
+        }
     }
-}
 
     async function cancelAppointment(date, id) {
     try {
