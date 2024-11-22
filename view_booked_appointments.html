@@ -213,15 +213,24 @@
     }
 
     function openWhatsApp(number, name, timeSlot, service, city) {
-        if (number) {
-            const message = encodeURIComponent(
-                `Hello ${name},\n\nThis is a reminder for your booked appointment:\n\n- Service: ${service}\n- Time Slot: ${timeSlot}\n- City: ${city}\n\nLooking forward to seeing you!\nDrift Hair Studio Vadodara - https://instagram.com/drifthairstudioandacademy | Business - https://g.co/kgs/wYMffUm\nWebsite - drifthair.studio`
-            );
-            window.location.href = `https://wa.me/${number}?text=${message}`;
-        } else {
-            alert('Contact number not available.');
-        }
+    if (number) {
+        const message = encodeURIComponent(
+            `Dear ${name},\n\n` +
+            `This is a gentle REMINDER about your appointment for *${service}* on *${timeSlot}* at Drift Hair Studio and Academy, Vadodara.\n\n` +
+            `We’re looking forward to your visit! Please ensure you arrive on time. If you need any assistance or wish to make changes, feel free to respond to this message.\n\n` +
+            `For updates and more, connect with us here:\n\n` +
+            `Instagram: instagram.com/drifthairstudioandacademy\n` +
+            `Google Profile: https://g.co/kgs/wYMffUm\n` +
+            `Website: drifthair.studio\n\n` +
+            `Thank you,\n` +
+            `Drift Hair Studio and Academy`
+        );
+        window.location.href = `https://wa.me/${number}?text=${message}`;
+    } else {
+        alert('Contact number not available.');
     }
+}
+
 
     async function cancelAppointment(date, id) {
     try {
@@ -243,7 +252,7 @@
         // Send WhatsApp message
         const message = encodeURIComponent(
             `Dear ${appointment.name},\n\n` +
-            `We regret to inform you that your appointment for ${appointment.service} on ${date}, ${appointment.timeSlot} ` +
+            `We regret to inform you that your appointment for *${appointment.service}* on *${date}*, *${appointment.timeSlot}* ` +
             `at Drift Hair Studio and Academy, Vadodara has been canceled.\n\n` +
             `If this was unexpected or you’d like to reschedule, please reply to this message or contact us. ` +
             `We’ll be happy to assist you in booking a new appointment at your convenience.\n\n` +
