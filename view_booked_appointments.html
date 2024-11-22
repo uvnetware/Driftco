@@ -224,22 +224,48 @@
     }
 
     async function cancelAppointment(date, id) {
-        try {
-            const response = await fetch(`https://drifthairstudioandacademyv-default-rtdb.firebaseio.com/appointments/${date}/${id}.json`, {
-                method: 'PATCH',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ remark: 'Canceled' })
-            });
+    try {
+        // Fetch the appointment details
+        const responseFetch = await fetch(`https://drifthairstudioandacademyv-default-rtdb.firebaseio.com/appointments/${date}/${id}.json`);
+        if (!responseFetch.ok) throw new Error('Failed to fetch appointment details.');
 
-            if (!response.ok) throw new Error('Failed to cancel appointment.');
+        const appointment = await responseFetch.json();
 
-            alert('Appointment canceled.');
-            loadAppointments();
-        } catch (error) {
-            console.error('Error:', error);
-            alert('Error canceling appointment.');
-        }
+        // Update the appointment status to "Canceled"
+        const responseUpdate = await fetch(`https://drifthairstudioandacademyv-default-rtdb.firebaseio.com/appointments/${date}/${id}.json`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ remark: 'Canceled' })
+        });
+
+        if (!responseUpdate.ok) throw new Error('Failed to cancel appointment.');
+
+        // Send WhatsApp message
+        const message = encodeURIComponent(
+            `Dear ${appointment.name},\n\n` +
+            `We regret to inform you that your appointment for ${appointment.service} on ${date}, ${appointment.timeSlot} ` +
+            `at Drift Hair Studio and Academy, Vadodara has been canceled.\n\n` +
+            `If this was unexpected or you’d like to reschedule, please reply to this message or contact us. ` +
+            `We’ll be happy to assist you in booking a new appointment at your convenience.\n\n` +
+            `Stay connected with us:\n` +
+            `Instagram: instagram.com/drifthairstudioandacademy\n` +
+            `Business Profile: https://g.co/kgs/wYMffUm\n` +
+            `Website: drifthair.studio\n\n` +
+            `Thank you for your understanding, and we look forward to serving you soon.\n\n` +
+            `Best regards,\n` +
+            `Drift Hair Studio and Academy`
+        );
+
+        const whatsappUrl = `https://wa.me/${appointment.number}?text=${message}`;
+        window.open(whatsappUrl, '_blank');
+
+        alert('Appointment canceled and WhatsApp message sent.');
+        loadAppointments();
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Error canceling appointment.');
     }
+}
     
     async function doneAppointment(date, id) {
         try {
