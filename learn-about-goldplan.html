@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drift Hair Studio - Gold Membership</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #0d0d0d;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        h1, h2, h3, h4 {
+            margin: 0;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            background: linear-gradient(to bottom, #FFD700, #b78d00);
+            padding: 50px 20px;
+            color: #000;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header h1 {
+            font-size: 3.5em;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            font-weight: 400;
+            margin-top: 10px;
+        }
+
+        .header .floating-ornament {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s infinite ease-in-out;
+        }
+
+        .header .floating-ornament:nth-child(1) {
+            top: -20px;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .header .floating-ornament:nth-child(2) {
+            bottom: -20px;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            font-size: 2.2em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: gold;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: gold;
+            margin: 10px auto 0;
+        }
+
+        /* Membership Table */
+        .membership-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .membership-table th, .membership-table td {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .membership-table th {
+            background-color: #FFD700;
+            color: #000;
+            font-size: 1.1em;
+            font-weight: bold;
+            border: 1px solid #b78d00;
+        }
+
+        .membership-table td {
+            background: #222;
+            color: #fff;
+            font-size: 1em;
+            border: 1px solid #333;
+        }
+
+        .membership-table td:hover {
+            background: gold;
+            color: #000;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+        }
+
+        /* Benefits List */
+        .benefits-list {
+            margin: 30px 0;
+            padding: 0;
+            list-style: none;
+            font-size: 1.2em;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .benefits-list li {
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .benefits-list li::before {
+            content: '✨';
+            position: absolute;
+            left: 0;
+            font-size: 1.3em;
+            color: gold;
+        }
+
+        /* Call to Action */
+        .cta {
+            text-align: center;
+            margin: 50px 0;
+            animation: bounceIn 1.5s ease-in-out;
+        }
+
+        .cta a {
+            display: inline-block;
+            padding: 15px 35px;
+            font-size: 1.2em;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #000;
+            background: linear-gradient(to right, #FFD700, #FFAE00);
+            border-radius: 50px;
+            box-shadow: 0px 5px 15px rgba(255, 215, 0, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta a:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 8px 20px rgba(255, 215, 0, 0.6);
+        }
+
+        /* Contact Section */
+        .contact-info {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 1.1em;
+            color: gold;
+        }
+
+        .contact-info p {
+            margin: 5px 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.9);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5em;
+            }
+
+            .section-title {
+                font-size: 1.8em;
+            }
+
+            .membership-table th, .membership-table td {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Drift Hair Studio</h1>
+            <p>Academy, Ladies Salon, and Beauty Care Hub</p>
+            <div class="floating-ornament"></div>
+            <div class="floating-ornament"></div>
+        </div>
+
+        <!-- Membership Plans -->
+        <h2 class="section-title">Gold Membership Plans</h2>
+        <table class="membership-table">
+            <tr>
+                <th>Plan</th>
+                <th>Price</th>
+                <th>Validity</th>
+            </tr>
+            <tr>
+                <td>1 Year</td>
+                <td>₹499</td>
+                <td>1 Year</td>
+            </tr>
+            <tr>
+                <td>2 Years</td>
+                <td>₹599</td>
+                <td>2 Years</td>
+            </tr>
+            <tr>
+                <td>3 Years</td>
+                <td>₹999</td>
+                <td>3 Years</td>
+            </tr>
+        </table>
+
+        <!-- Free Membership Offers -->
+        <h2 class="section-title">Free Membership Offers</h2>
+        <ul class="benefits-list">
+            <li>1-Year Free Membership: Spend ₹1999 or more in a single bill.</li>
+            <li>2-Year Free Membership: Spend ₹4999 or more in a single bill.</li>
+            <li>3-Year Free Membership: Spend ₹7499 or more in a single bill.</li>
+        </ul>
+
+        <!-- Membership Benefits -->
+        <h2 class="section-title">Membership Benefits</h2>
+        <ul class="benefits-list">
+            <li>Priority Booking: Skip the queue with priority appointment scheduling.</li>
+            <li>Exclusive Discounts: Get <strong>15% off</strong> on bills above ₹1499.</li>
+            <li>Birthday Special: Enjoy <strong>50% off</strong> during your birthday month (up to 3 times).</li>
+            <li>Personalized Offers: Receive reminders for exclusive offers and promotions.</li>
+            <li>Beauty Updates: Stay updated with the latest trends, tips, and beauty care solutions.</li>
+        </ul>
+
+        <!-- Call to Action -->
+        <div class="cta">
+            <a href="tel:6352371064">Join Now</a>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="contact-info">
+            <p>📞 Contact: 6352371064</p>
+            <p>📍 Address: GF23 Phoenix Resi-com, Veikunth Char Rasta, Waghodia Road, Vadodara</p>
+        </div>
+    </div>
+</body>
+</html>
